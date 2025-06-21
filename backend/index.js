@@ -22,3 +22,8 @@ app.get("/api/quote", async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`API running on port ${PORT}`));
+
+app.get("/", (req, res) => {
+  res.send("✅ Brezinos Investing API is running.");
+});
+
