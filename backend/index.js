@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 const FINNHUB_API_KEY = process.env.FINNHUB_API_KEY;
 
 // Servíruj frontend staticky
-app.use(express.static(path.join(__dirname, "../frontend")));
+app.use(express.static(path.join(__dirname, "../Frontend")));
 
 app.get("/api/quote", async (req, res) => {
   const symbol = req.query.symbol;
@@ -27,7 +27,7 @@ app.get("/api/quote", async (req, res) => {
 
 // Pro kořenovou URL pošli index.html
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/index.html"));
+  res.sendFile(path.join(__dirname, "../Frontend/index.html"));
 });
 
 app.listen(PORT, () => console.log(`API running on port ${PORT}`));
