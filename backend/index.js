@@ -27,3 +27,7 @@ app.get("/", (req, res) => {
   res.send("✅ Brezinos Investing API is running.");
 });
 
+const path = require("path");
+app.use(express.static(path.join(__dirname, "../frontend")));
+
+

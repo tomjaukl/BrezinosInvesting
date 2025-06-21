@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+  <title>Brezinos Investing</title>
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>
-        Epic beggining of the Brezinos Investing Compnay.
-    </h1>
-    <script src="script.js"></script>
+  <h1>📈 Brezinos Investing</h1>
+  <p>Enter a stock symbol:</p>
+  <input id="symbol" value="AAPL">
+  <button onclick="fetchStock()">Get Quote</button>
+  <pre id="output">No data yet</pre>
 </body>
 </html>

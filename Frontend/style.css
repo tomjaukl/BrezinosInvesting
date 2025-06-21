@@ -1,0 +1,9 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 2rem;
+  background: #f9f9f9;
+}
+input {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+}
