@@ -1,10 +1,14 @@
 const express = require("express");
 const axios = require("axios");
 require("dotenv").config();
+const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const FINNHUB_API_KEY = process.env.FINNHUB_API_KEY;
+
+// Servíruj frontend staticky
+app.use(express.static(path.join(__dirname, "../frontend")));
 
 app.get("/api/quote", async (req, res) => {
   const symbol = req.query.symbol;
@@ -21,13 +25,9 @@ app.get("/api/quote", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`API running on port ${PORT}`));
-
+// Pro kořenovou URL pošli index.html
 app.get("/", (req, res) => {
-  res.send("✅ Brezinos Investing API is running.");
+  res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
 
-const path = require("path");
-app.use(express.static(path.join(__dirname, "../frontend")));
-
-
+app.listen(PORT, () => console.log(`API running on port ${PORT}`));
