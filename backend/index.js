@@ -29,5 +29,10 @@ app.get("/api/quote", async (req, res) => {
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../Frontend/index.html"));
 });
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../Frontend/index.html"));
+});
 
 app.listen(PORT, () => console.log(`API running on port ${PORT}`));
+
+console.log("Serving static from:", path.join(__dirname, "../Frontend"));
