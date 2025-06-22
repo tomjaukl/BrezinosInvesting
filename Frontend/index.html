@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Brezinos Investing</title>
-  <script defer src="script.js"></script>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>📈 Brezinos Investing</h1>
-  <p>Enter a stock symbol:</p>
-  <input id="symbol" value="AAPL">
-  <button onclick="fetchStock()">Get Quote</button>
-  <pre id="output">No data yet</pre>
+  <h1>Stock Price Checker</h1>
+  <input type="text" id="symbol" placeholder="Enter stock symbol (e.g. AAPL)" />
+  <button onclick="getQuote()">Get Quote</button>
+
+  <div id="result"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>

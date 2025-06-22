@@ -1,6 +1,22 @@
-async function fetchStock() {
-  const symbol = document.getElementById('symbol').value;
-  const res = await fetch(`/api/quote?symbol=${symbol}`);
-  const data = await res.json();
-  document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+async function getQuote() {
+  const symbol = document.getElementById("symbol").value.toUpperCase();
+  const resultDiv = document.getElementById("result");
+
+  try {
+    const response = await fetch(`/api/quote?symbol=${symbol}`);
+    const data = await response.json();
+
+    if (data.c) {
+      resultDiv.innerHTML = `
+        <p>Current Price: $${data.c}</p>
+        <p>High: $${data.h}</p>
+        <p>Low: $${data.l}</p>
+        <p>Open: $${data.o}</p>
+      `;
+    } else {
+      resultDiv.innerHTML = `<p>No data found for "${symbol}"</p>`;
+    }
+  } catch (err) {
+    resultDiv.innerHTML = `<p>Error fetching data</p>`;
+  }
 }

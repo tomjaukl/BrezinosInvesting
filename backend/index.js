@@ -1,11 +1,16 @@
 const express = require("express");
 const axios = require("axios");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const FINNHUB_API_KEY = process.env.FINNHUB_API_KEY;
 
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, "../Frontend")));
+
+// API route for stock data
 app.get("/api/quote", async (req, res) => {
   const symbol = req.query.symbol;
   if (!symbol) return res.status(400).json({ error: "Missing symbol" });
@@ -21,9 +26,9 @@ app.get("/api/quote", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`API running on port ${PORT}`));
-
+// Optional: Fallback to index.html for root
 app.get("/", (req, res) => {
-  res.send("✅ Brezinos Investing API is running.");
+  res.sendFile(path.join(__dirname, "../Frontend/index.html"));
 });
 
+app.listen(PORT, () => console.log(`✅ API running at http://localhost:${PORT}`));
