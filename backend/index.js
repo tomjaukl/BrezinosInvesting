@@ -7,6 +7,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const FINNHUB_API_KEY = process.env.FINNHUB_API_KEY;
 
+console.log("INDEX PATH:", path.join(__dirname, "../Frontend/index.html"));
+
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, "../Frontend")));
 
